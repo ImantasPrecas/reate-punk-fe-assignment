@@ -1,0 +1,15 @@
+@use 'variables' as var;
+
+.base {
+   background-color: var.$color-yellow;
+   display: flex;
+   flex-direction: column;
+   padding: 3rem 1rem;
+   
+}
+.section {
+   background-color: var.$color-yellow;
+   display: flex;
+   flex-direction: column;
+   
+}

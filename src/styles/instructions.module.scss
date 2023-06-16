@@ -1,0 +1,36 @@
+@use 'variables' as var;
+
+.instructions {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 3rem;
+
+      .step_number {
+         margin-top: 2.1rem;
+         text-transform: uppercase;
+         font-size: 1rem;
+         font-weight: 700;
+         color: var.$color-blue;
+      }
+
+      .step_title {
+         margin-top: 1rem;
+         margin-bottom: 1rem;
+         // margin: 0 1rem 0 1rem;
+         font-family: var.$font-Caveat-normal;
+         font-size: 2rem;
+         color: var.$color-dark-gray
+      }
+
+      .step_description {
+         color: var.$color-dark-gray;
+         text-align: center;
+      }
+   }
+   
+}

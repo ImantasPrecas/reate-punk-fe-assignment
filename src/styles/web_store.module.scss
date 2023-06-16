@@ -1,0 +1,60 @@
+@use './variables' as var;
+
+.base {
+   width: 100%;
+   background-color: #45565E;
+   display: flex;
+   flex-direction: column;
+   // align-items: center;
+   justify-content: center;
+   gap: 1rem;
+   padding: 2rem;
+   padding-left: 2rem;
+   padding-right: 2rem;
+   border: 1px solid var.$color-dark-gray;
+
+}
+
+.web_card {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   padding: 1.14rem 1.5rem 1.14rem 1.5rem;
+   gap: 1.5rem;
+   border: 1px solid var.$color-dark-gray;
+   border-radius: 1rem;
+   color: var.$color-light-gray;
+   text-decoration: none;
+
+   .description p, h3 {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      font-family: var.$font-Noto-normal;
+
+   }
+   .description p {
+      font-size: 1rem;
+   }
+   .description h3 {
+      font-size: 20px;
+   }
+}
+
+.review {
+   display: flex;
+   justify-content: center;
+   color: white;
+   gap: 1rem;
+
+   .stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: white
+   };
+   p {
+      font-size: 1rem;
+   }
+
+}

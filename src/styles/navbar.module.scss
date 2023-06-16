@@ -1,0 +1,25 @@
+@use 'variables' as var;
+
+.navbar {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0.75rem 1rem;
+   border: 1px solid var.$color-dark-gray;
+   
+   .hamburger_button {
+      height: 2rem;
+      width: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      cursor: pointer;
+      
+      img {
+         height: 2rem;
+         width: 2rem;
+      }
+   }
+}
