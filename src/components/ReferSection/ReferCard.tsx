@@ -1,6 +1,8 @@
 import styles from '@/styles/refer_card.module.scss';
 import Image from 'next/image';
+
 import emailIcon from '@/assets/email.svg';
+import confirmIcon from '@/assets/success.svg';
 
 type Props = {};
 const ReferCard = (props: Props) => {
@@ -12,6 +14,14 @@ const ReferCard = (props: Props) => {
 				coin for each friend that installs our extension. Minimum cash-out at 20
 				coins.
 			</p>
+			{/* Confirm message */}
+			<div className={styles.successMsg}>
+				<Image src={confirmIcon} alt='confirm icon' />
+				<p>Your email is confirmed!</p>
+			</div>
+
+			{/* /Confirm message */}
+
 			<form action=''>
 				<div className={styles.input_container}>
 					<span className={styles.icon}>
