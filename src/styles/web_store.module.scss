@@ -1,4 +1,5 @@
 @use './variables' as var;
+@import 'mixins';
 
 .container {
    width: 100%;    
@@ -30,6 +31,7 @@
    border-radius: 1rem;
    color: var.$color-light-gray;
    text-decoration: none;
+   @include buttonTransform;
 
    .logo {
       width: auto;
@@ -75,7 +77,7 @@
    .base {      
       width: 70%;
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: space-between;
    }
    .web_card {
       padding: 1rem 1.5rem;

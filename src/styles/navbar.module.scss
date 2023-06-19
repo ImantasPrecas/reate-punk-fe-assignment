@@ -1,4 +1,5 @@
 @use 'variables' as var;
+@import 'mixins';
 
 .container {
    width: 100%;    
@@ -22,11 +23,7 @@
          gap: 3.5rem
       }
       li a {
-         &:hover {
-            color: var.$color-blue;          
-            transition: color 0.2s ease-in;
-         }
-         
+         @include linkHover         
       }
    }
    
@@ -81,10 +78,7 @@
          display: inline-block;
          width: 100%;
          padding-top: 1rem;
-         &:hover {
-            color: var.$color-blue;          
-            transition: color 0.2s ease-in;
-         }
+         @include linkHover;
          
       }
    }

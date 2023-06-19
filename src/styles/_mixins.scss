@@ -1,0 +1,14 @@
+@mixin buttonTransform {
+   &:hover {
+      transform: translate(0.2rem, -0.2rem);
+      box-shadow: 0 0.3rem 0.6rem rgba(31,52,62,.16);
+   }
+   transition: all 200ms ease-in-out;
+}
+
+@mixin linkHover {
+   &:hover {
+      color: var.$color-blue;
+   }
+   transition: all 200ms ease-in-out;
+}

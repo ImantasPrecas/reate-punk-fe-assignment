@@ -1,10 +1,12 @@
 @use 'variables' as var;
+@import 'mixins';
 
 .card {	
    // margin: 1rem;
    padding: 1rem;
    display: flex;
    flex-direction: column;
+   justify-content: space-between;
    background-color: var.$color-base-gray;
    border: 1px solid var.$color-dark-gray;
    border-radius: 16px;
@@ -22,6 +24,11 @@
       margin-bottom: 1.5rem;
       font-family: var.$font-Noto-normal;
       font-size: 1rem;
+   }
+   .form_errorMsg {
+      margin-bottom: 7px;
+      font-size: 12px;
+      color: #ED6F82
    }
 }
 
@@ -53,6 +60,7 @@
       background-color: inherit;
       font-size: 1rem;
    }
+   
 }
 
 .submitBtn {
@@ -66,16 +74,10 @@
    font-size: 1rem;
    color: white;
    cursor: pointer;
-   &:hover {
-      transform: translate(0.2rem, -0.2rem);
-      box-shadow: 0 0.3rem 0.6rem rgba(31,52,62,.16);
-      transition:  200ms ease-in;
-      
-   }
-   transition: all 200ms ease-in-out;
+   @include buttonTransform;
 }
 
-.bottom_text {
+.bottom_text {   
    margin-top: 4.5rem;
    font-family: var.$font-Noto-normal;
    color: #6D7A80;
@@ -85,5 +87,10 @@
    .card {
       display: flex;
       flex: 1;
+      padding: 2rem;
+   }
+   .bottom_text {
+      margin-top: 0;
+      margin-bottom: 4.5rem;
    }
 }

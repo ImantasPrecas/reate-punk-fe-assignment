@@ -10,6 +10,22 @@ import linkedinIcon from '@/assets/linkedin.svg';
 import twitterIcon from '@/assets/twitter.svg';
 import tiktokIcon from '@/assets/tiktok.svg';
 
+const SOCIALS = [
+	{ name: 'instagram', icon: instagramIcon, href: '/' },
+	{ name: 'facebook', icon: facebookIcon, href: '/' },
+	{ name: 'linkedin', icon: linkedinIcon, href: '/' },
+	{ name: 'twitter', icon: twitterIcon, href: '/' },
+	{ name: 'tiktok', icon: tiktokIcon, href: '/' },
+];
+
+const QUICK_LINKS = [
+	{ title: 'Price Comparison', href: '/' },
+	{ title: 'Chrome Extension', href: '/' },
+	{ title: 'How It Works', href: '/' },
+	{ title: 'Ratepunk Blog', href: '/' },
+	{ title: 'Privacy Policy', href: '/' },
+];
+
 type Props = {};
 const Footer = (props: Props) => {
 	return (
@@ -38,11 +54,11 @@ const Footer = (props: Props) => {
 					<div>
 						<h4 className={styles.links_title}>Quick Links</h4>
 						<div className={styles.links}>
-							<Link href='/'>Price Comparison</Link>
-							<Link href='/'>Chrome Extension</Link>
-							<Link href='/'>How It Works</Link>
-							<Link href='/'>Ratepunk Blog</Link>
-							<Link href='/'>Privacy Policy</Link>
+							{QUICK_LINKS.map((link) => (
+								<Link key={link.title} href={link.href}>
+									{link.title}
+								</Link>
+							))}
 						</div>
 					</div>
 					{/* Contacts */}
@@ -50,29 +66,26 @@ const Footer = (props: Props) => {
 						<div>
 							<h4 className={styles.links_title}>Contact</h4>
 							<div className={styles.email}>
-								<Image src={emailIcon} alt='email icon' />
-								<a href='mailto:hi@ratepunk.com'>hi@ratepunk.com</a>
+								{/* <Image src={emailIcon} alt='email icon' /> */}
+								<a href='mailto:hi@ratepunk.com'>
+									<Image src={emailIcon} alt='email icon' />{' '}
+									<span>hi@ratepunk.com</span>
+								</a>
 							</div>
 						</div>
 						{/* Social */}
 						<div>
 							<h4 className={styles.links_title}>Social</h4>
 							<div className={styles.social_links}>
-								<Link className={styles.social} href='/'>
-									<Image src={instagramIcon} alt='Instagram icon' />
-								</Link>
-								<Link className={styles.social} href='/'>
-									<Image src={facebookIcon} alt='facebook icon' />
-								</Link>
-								<Link className={styles.social} href='/'>
-									<Image src={linkedinIcon} alt='linkedin icon' />
-								</Link>
-								<Link className={styles.social} href='/'>
-									<Image src={twitterIcon} alt='twitter icon' />
-								</Link>
-								<Link className={styles.social} href='/'>
-									<Image src={tiktokIcon} alt='tiktok icon' />
-								</Link>
+								{SOCIALS.map((item) => (
+									<Link
+										key={item.name}
+										className={styles.social}
+										href={item.href}
+									>
+										<Image src={item.icon} alt='Instagram icon' />
+									</Link>
+								))}
 							</div>
 						</div>
 					</div>
