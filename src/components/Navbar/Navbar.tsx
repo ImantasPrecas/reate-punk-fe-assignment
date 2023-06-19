@@ -9,40 +9,61 @@ import Link from 'next/link';
 type Props = {};
 function Navbar({}: Props) {
 	return (
-		<nav className={styles.navbar}>
-			{/* MobileMenu */}
-			<div className={styles.mobile_menu}>
-				<div className={styles.mobile_actions}>
-					<Link href='/'>
-						<Image src={ratepunkLogo} height={32} alt='Brand Logo' />
-					</Link>
-					<button>
-						<Image src={closeBtn} alt='close menu button' />
-					</button>
+		<div className={styles.container}>
+			<nav className={styles.navbar}>
+				{/* MobileMenu */}
+				<div className={styles.mobile_menu}>
+					<div className={styles.mobile_actions}>
+						<Link href='/'>
+							<Image src={ratepunkLogo} height={32} alt='Brand Logo' />
+						</Link>
+						<button>
+							<Image src={closeBtn} alt='close menu button' />
+						</button>
+					</div>
+					<div className={styles.drop_menu_items}>
+						<ul>
+							<li>
+								<Link href='/'>Chrome Extension</Link>
+							</li>
+							<li>
+								<Link href='/'>Price Comparison</Link>
+							</li>
+							<li>
+								<Link href='/'>Blog</Link>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div className={styles.menu_items}>
+				{/* /MobileMenu */}
+
+				<div>
+					<Image src={ratepunkLogo} height={32} alt='Brand Logo' />
+				</div>
+				<div className={styles.nav_links}>
 					<ul>
 						<li>
-							<Link href='/'>Chrome Extension</Link>
+							<Link href='/'>
+								<p>Chrome Extension</p>
+							</Link>
 						</li>
 						<li>
-							<Link href='/'>Price Comparison</Link>
+							<Link href='/'>
+								<p>Price Comparison</p>
+							</Link>
 						</li>
 						<li>
-							<Link href='/'>Blog</Link>
+							<Link href='/'>
+								<p>Blog</p>
+							</Link>
 						</li>
 					</ul>
 				</div>
-			</div>
-			{/* /MobileMenu */}
-
-			<div>
-				<Image src={ratepunkLogo} height={32} alt='Brand Logo' />
-			</div>
-			<button className={styles.hamburger_button}>
-				<Image src={hamburgerBtnIcon} alt='hamburger menu' />
-			</button>
-		</nav>
+				<button className={styles.hamburger_button}>
+					<Image src={hamburgerBtnIcon} alt='hamburger menu' />
+				</button>
+			</nav>
+		</div>
 	);
 }
 export default Navbar;

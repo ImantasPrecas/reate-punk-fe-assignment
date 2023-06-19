@@ -5,9 +5,11 @@ import Instructions from './Instructions';
 type Props = {};
 const ReferSection = (props: Props) => {
 	return (
-		<main className={styles.base}>
-			<ReferCard />
-			<Instructions />
+		<main className={styles.container}>
+			<div className={styles.base}>
+				<ReferCard />
+				<Instructions />
+			</div>
 		</main>
 	);
 };

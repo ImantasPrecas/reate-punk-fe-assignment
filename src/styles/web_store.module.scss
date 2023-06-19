@@ -1,8 +1,14 @@
 @use './variables' as var;
 
+.container {
+   width: 100%;    
+   overflow: visible;
+   background-color: #45565E;
+   border: 1px solid var.$color-dark-gray;
+}
 .base {
    width: 100%;
-   background-color: #45565E;
+   margin: 0 auto;
    display: flex;
    flex-direction: column;
    // align-items: center;
@@ -11,7 +17,6 @@
    padding: 2rem;
    padding-left: 2rem;
    padding-right: 2rem;
-   border: 1px solid var.$color-dark-gray;
 
 }
 
@@ -19,12 +24,16 @@
    width: 100%;
    display: flex;
    align-items: center;
-   padding: 1.14rem 1.5rem 1.14rem 1.5rem;
+   padding: 1.14rem 1.5rem;
    gap: 1.5rem;
    border: 1px solid var.$color-dark-gray;
    border-radius: 1rem;
    color: var.$color-light-gray;
    text-decoration: none;
+
+   .logo {
+      width: auto;
+   }
 
    .description p, h3 {
       display: flex;
@@ -43,9 +52,12 @@
 
 .review {
    display: flex;
+   flex-wrap: nowrap;
    justify-content: center;
+   align-items: center;
    color: white;
    gap: 1rem;
+
 
    .stars {
       display: flex;
@@ -57,4 +69,30 @@
       font-size: 1rem;
    }
 
+}
+
+@media screen and (min-width: var.$layout-breakpoint-desktop) {
+   .base {      
+      width: 70%;
+      flex-direction: row;
+      justify-content: space-evenly;
+   }
+   .web_card {
+      padding: 1rem 1.5rem;
+      gap: 1.14rem
+      
+   }
+   .description p h4{
+      font-size: 1rem !important;
+   }
+   .logo {      
+         width: 1rem;      
+   }
+   .review {
+      align-items: center;
+      .stars {
+         display: flex;
+         align-items: center;
+      }
+   }
 }

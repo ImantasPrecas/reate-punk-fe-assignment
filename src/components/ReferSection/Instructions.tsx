@@ -11,37 +11,43 @@ const Instructions = (props: Props) => {
 		<section className={styles.instructions}>
 			{/* step1 */}
 			<div className={styles.step}>
-				<span>
+				<div className={styles.step_img}>
 					<Image src={inviteIcon} width={128} alt='invite image' />
-				</span>
-				<p className={styles.step_number}>step 1</p>
-				<h3 className={styles.step_title}>INVITE FRIENDS</h3>
-				<p className={styles.step_description}>
-					Refer friends with your unique referral link.
-				</p>
+				</div>
+				<div className={styles.step_info}>
+					<p className={styles.step_number}>step 1</p>
+					<h3 className={styles.step_title}>INVITE FRIENDS</h3>
+					<p className={styles.step_description}>
+						Refer friends with your unique referral link.
+					</p>
+				</div>
 			</div>
 			{/* step2 */}
 			<div className={styles.step}>
-				<span>
+				<div className={styles.step_info}>
+					<p className={styles.step_number}>step 2</p>
+					<h3 className={styles.step_title}>COLLECT COINS</h3>
+					<p className={styles.step_description}>
+						Get 1 coin for each friend that installs our extension using your
+						referral link.
+					</p>
+				</div>
+				<div className={styles.step_img}>
 					<Image src={colectIcon} width={128} alt='invite image' />
-				</span>
-				<p className={styles.step_number}>step 2</p>
-				<h3 className={styles.step_title}>COLLECT COINS</h3>
-				<p className={styles.step_description}>
-					Get 1 coin for each friend that installs our extension using your
-					referral link.
-				</p>
+				</div>
 			</div>
 			{/* step3 */}
 			<div className={styles.step}>
-				<span>
+				<div className={styles.step_img}>
 					<Image src={voucherIcon} width={128} alt='invite image' />
-				</span>
-				<p className={styles.step_number}>step 3</p>
-				<h3 className={styles.step_title}>GET VOUCHER</h3>
-				<p className={styles.step_description}>
-					Redeem for a $20 hotel booking voucher once you collect 20 coins.
-				</p>
+				</div>
+				<div className={styles.step_info}>
+					<p className={styles.step_number}>step 3</p>
+					<h3 className={styles.step_title}>GET VOUCHER</h3>
+					<p className={styles.step_description}>
+						Redeem for a $20 hotel booking voucher once you collect 20 coins.
+					</p>
+				</div>
 			</div>
 		</section>
 	);

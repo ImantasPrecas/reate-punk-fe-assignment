@@ -1,13 +1,28 @@
 @use 'variables' as var;
 
+.container {
+   width: 100%;    
+   overflow: visible;
+   border-bottom: 1px solid var.$color-dark-gray;
+}
+
 .navbar {
-   width: 100%;
+   margin: 0 auto;
+   max-width: 100%; 
    display: flex;
    position: relative;
    justify-content: space-between;
    align-items: center;
    padding: 0.75rem 1rem;
-   border: 1px solid var.$color-dark-gray;
+   
+
+   .nav_links {
+      display: none;
+      ul {
+         display: flex;
+         gap: 3.5rem
+      }
+   }
    
    .hamburger_button {
       height: 2rem;
@@ -45,23 +60,33 @@
          }
       }
 
-      .menu_items ul {
+      .drop_menu_items ul {
          display: flex;
          flex-direction: column;         
       }
       li a {
-         // background-color: red;
          display: inline-block;
          width: 100%;
          padding-top: 1rem ;
-         &:hover {
-            color: var.$color-blue            
+         :hover {
+            color: var.$color-blue;            
+            transition: color 0.2s ease-in;
          }
-         transition: color 0.2s ease-in;
       }
    }
 }
 
-@media (min-width: var.$layout-breakpoint-desktop) {
+@media screen and (min-width: var.$layout-breakpoint-desktop) {
+   .navbar {
+      max-width: 70%; 
+   }   
+      .hamburger_button {
+         display: none !important;
+      }
 
+      .nav_links {
+         display: block !important;        
+      };
+      
+   
 }

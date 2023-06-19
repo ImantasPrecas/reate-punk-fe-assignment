@@ -16,7 +16,7 @@ const ReferCard = (props: Props) => {
 			</p>
 			{/* Confirm message */}
 			<div className={styles.successMsg}>
-				<Image src={confirmIcon} alt='confirm icon' />
+				<Image src={confirmIcon} width={24} alt='confirm icon' />
 				<p>Your email is confirmed!</p>
 			</div>
 
