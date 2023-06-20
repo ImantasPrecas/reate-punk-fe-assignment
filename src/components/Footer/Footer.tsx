@@ -66,7 +66,7 @@ const Footer = (props: Props) => {
 						<div>
 							<h4 className={styles.links_title}>Contact</h4>
 							<div className={styles.email}>
-								{/* <Image src={emailIcon} alt='email icon' /> */}
+								<Image src={emailIcon} alt='email icon' />
 								<a href='mailto:hi@ratepunk.com'>
 									<Image src={emailIcon} alt='email icon' />{' '}
 									<span>hi@ratepunk.com</span>
