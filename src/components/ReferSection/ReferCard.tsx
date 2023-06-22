@@ -1,35 +1,22 @@
 'use client';
-import { FormEvent, useState } from 'react';
-import useInput from '@/hooks/useInput';
+import { useState } from 'react';
 
 import styles from '@/styles/refer_card.module.scss';
-import Image from 'next/image';
 
-import emailIcon from '@/assets/email.svg';
-import confirmIcon from '@/assets/success.svg';
+import FormInput from './FormInput';
+import ErrorMessage from './ErrorMessage';
+import ReferalLink from './ReferalLink';
 
 const URI = 'https://api.jsonbin.io/v3/b';
 const BIN_ID = '64915aca9d312622a37284f3';
-const API_KEY = '$2b$10$kXqx9.5jH7Av.Q/QfvZaCuu5g2mElY95L80kx.EqJMXdgovA5/7AW';
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || '';
 
 type Props = {};
-const ReferCard = (props: Props) => {
-	const [isCopied, setIsCopied] = useState(false);
+const ReferCard = ({}: Props) => {
 	const [emailConfirmed, setEmailConfirmed] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [referralLink, setReferralLink] = useState('');
 	const [fetchError, setFetchError] = useState<null | string>(null);
-
-	const placeholderText = 'Please enter your email';
-
-	const {
-		value: enteredEmail,
-		isValid: enteredEmailIsValid,
-		hasError: emailInputHasError,
-		errorMessage: emailErrorMessage,
-		valueChangeHandler: handleEmailChange,
-		inputBlurHandler: emailBlurHandler,
-	} = useInput('email');
 
 	const sendEmail = async (url: string, data: { email: string }) => {
 		const response = await fetch(url, {
@@ -45,8 +32,7 @@ const ReferCard = (props: Props) => {
 		return response;
 	};
 
-	const formSubmitHandler = (e: FormEvent) => {
-		e.preventDefault();
+	const formSubmitHandler = (enteredEmail: string) => {
 		setIsLoading(true);
 		sendEmail(`${URI}/${BIN_ID}`, { email: enteredEmail })
 			.then((respData) => {
@@ -75,11 +61,6 @@ const ReferCard = (props: Props) => {
 			});
 	};
 
-	const handleCopyToClipboard = async () => {
-		navigator.clipboard.writeText(referralLink);
-		setIsCopied(true);
-	};
-
 	return (
 		<div className={styles.card}>
 			<div>
@@ -90,67 +71,16 @@ const ReferCard = (props: Props) => {
 					cash-out at 20 coins.
 				</p>
 
-				{/* Confirm message */}
-				{emailConfirmed && (
-					<div className={styles.successMsg}>
-						<Image src={confirmIcon} width={24} alt='confirm icon' />
-						<p>Your email is confirmed!</p>
-					</div>
-				)}
-				{/* /Confirm message */}
+				{fetchError && <ErrorMessage message={fetchError} />}
 
-				{/* Error message */}
-				{emailInputHasError && (
-					<p className={styles.form_errorMsg}>{emailErrorMessage}</p>
-				)}
-				{fetchError && <p className={styles.form_errorMsg}>{fetchError}</p>}
-				{/* /Error message */}
-
-				{/* Referral link */}
-				{emailConfirmed && (
-					<div className={styles.referral_container}>
-						<p>{referralLink}</p>
-						{/* <input type='text' value={referralLink} readOnly /> */}
-						<button onClick={handleCopyToClipboard} disabled={isCopied}>
-							{isCopied ? 'Copied!' : 'Copy'}
-						</button>
-					</div>
-				)}
-				{/* /Referral link */}
-
-				{/* Email form */}
+				{emailConfirmed && <ReferalLink referralLink={referralLink} />}
 				{!emailConfirmed && (
-					<form onSubmit={formSubmitHandler}>
-						<div className={styles.input_container}>
-							<span className={styles.icon}>
-								<Image
-									priority
-									src={emailIcon}
-									width={16}
-									height={13}
-									alt='email icon'
-								/>
-							</span>
-							<input
-								type='text'
-								name='email'
-								value={enteredEmail}
-								onChange={handleEmailChange}
-								onBlur={emailBlurHandler}
-								className={styles.input_field}
-								placeholder={placeholderText}
-							/>
-						</div>
-						<button
-							disabled={!enteredEmailIsValid || isLoading}
-							type='submit'
-							className={styles.submitBtn}
-						>
-							{isLoading ? 'Please wait...' : 'Get Referral Link'}
-						</button>
-					</form>
+					<FormInput
+						onFormSubmit={formSubmitHandler}
+						emailConfirmed={emailConfirmed}
+						isLoading={isLoading}
+					/>
 				)}
-				{/* /Email form */}
 			</div>
 
 			<p className={styles.bottom_text}>Limits on max rewards apply.</p>
